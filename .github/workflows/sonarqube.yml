@@ -16,16 +16,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # - name: Set up JDK 17
-      #   uses: actions/setup-java@v3
-      #   with:
-      #     java-version: 17
-      #     distribution: temurin
+      # Set up Java
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
 
-      # - name: Java Path 
-      #   run: |
-      #     which java
-      #       echo $JAVA_HOME
+      # Cache Maven dependencies
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-
 
       - name: Show All JAVA
         run: update-alternatives --config java
