@@ -1,4 +1,4 @@
-name: SonarQube
+name: SonarQube updated 2
 on:
   push:
     branches:
@@ -37,6 +37,8 @@ jobs:
         run: |
              mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=pratikshatiwari_EmployeeService
 
+      
+      
       - name: Install SonarScanner
         run: |
           curl -sL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.0.0.4432-linux.zip -o sonar-scanner.zip
@@ -44,13 +46,12 @@ jobs:
           mv sonar-scanner-6.0.0.4432-linux sonar-scanner
           echo "SONAR_SCANNER_HOME=$(pwd)/sonar-scanner" >> $GITHUB_ENV
           echo "PATH=$(pwd)/sonar-scanner/bin:$PATH" >bgv vITHUB_ENV
-      
       - name: Run SonarScanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=pratikshatiwari_EmployeeService \
+            -Dsonar.projectKey=pratikshatiwari_Sample-Node.js-Application \
             -Dsonar.organization=pratikshatiwari \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.sources=.
