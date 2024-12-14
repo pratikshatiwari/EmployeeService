@@ -1,30 +1,20 @@
-name: SonarCloud Scan
+name: Run SonarQube with Maven
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
-  sonarcloud:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Sonar Scanner
-        run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
-          unzip sonar-scanner-cli-4.8.0.2856-linux.zip
-          export PATH=$PATH:$PWD/sonar-scanner-4.8.0.2856-linux/bin
-
-      - name: Run Sonar Scanner
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=pratikshatiwari_EmployeeService \
-            -Dsonar.organization=pratikshatiwari \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.sources=.
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven cloud
+      run:  mvn -B verify sonar:sonar -Dsonar.projectKey=javareachabilityy -Dsonar.organization=javareachabilityy -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARCLOUD_TOKEN
+      env:
+        GIT_HUB_TOKEN: ${{ secrets.GIT_HUB_TOKEN }}
+        SONARCLOUD_TOKEN: ${{ secrets.SONAR_TOKEN }}
