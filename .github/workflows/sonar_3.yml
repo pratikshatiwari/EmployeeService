@@ -42,6 +42,14 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.sarif.output=true
 
+      - name: Check SARIF File
+        run: ls target/sonar/
+
+      - name: Verify SARIF Path
+        run: |
+           echo "Checking SARIF files..."
+           ls -R . | grep .sarif || echo "SARIF file not found"
+
       - name: Upload SARIF to GitHub
         uses: github/codeql-action/upload-sarif@v2
         with:
