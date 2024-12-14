@@ -17,6 +17,7 @@
     <properties>
         <sonar.organization>pratikshatiwari</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectKey>pratikshatiwari_EmployeeService</sonar.projectKey>
     </properties>
     
    <dependencies>
