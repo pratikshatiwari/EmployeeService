@@ -7,3 +7,5 @@ const greeting = `Hello, ${userInput}!`;
 
 // Output the potentially unsafe greeting
 console.log(greeting);
+
+password = pass@123;
