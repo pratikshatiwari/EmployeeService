@@ -40,7 +40,7 @@ jobs:
             -Dsonar.organization=pratikshatiwari \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.sarif.output=true -X
+            #-Dsonar.sarif.output=true -X
 
       - name: Check SARIF File
         run: ls target/sonar/
