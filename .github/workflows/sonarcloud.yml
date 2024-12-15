@@ -16,7 +16,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
+          java-version: '17'
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
@@ -26,6 +26,10 @@ jobs:
           restore-keys: ${{ runner.os }}-maven
 
       - name: Analyze with SonarCloud
-        uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+             mvn clean verify org.sonarsource.scanner.maven:sonar \
+             -Dsonar.projectKey=pratikshatiwari_EmployeeService \
+             -Dsonar.organization=pratikshatiwari \
+             -Dsonar.host.url=https://sonarcloud.io \
+             -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
