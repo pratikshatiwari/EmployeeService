@@ -39,7 +39,7 @@ jobs:
             -Dsonar.projectKey=pratikshatiwari_EmployeeService \
             -Dsonar.organization=pratikshatiwari \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }} 
             #-Dsonar.sarif.output=true -X
 
       - name: Check SARIF File
