@@ -43,3 +43,14 @@ jobs:
                -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
                -Dsonar.java.binaries=target/classes
 
+
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "security"
+
+      - name: Upload SARIF Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: results.sarif
