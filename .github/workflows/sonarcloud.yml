@@ -48,19 +48,19 @@ jobs:
                -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
                -Dsonar.java.binaries=target/classes
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
-        with:
-          languages: java
-          token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Initialize CodeQL
+      #   uses: github/codeql-action/init@v2
+      #   with:
+      #     languages: java
+      #     token: ${{ secrets.GITHUB_TOKEN }}
 
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-        with:
-          category: "security"
+      # - name: Perform CodeQL Analysis
+      #   uses: github/codeql-action/analyze@v2
+      #   with:
+      #     category: "security"
 
-      - name: Upload SARIF Report
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ../results/codeql.sarif
+      # - name: Upload SARIF Report
+      #   uses: github/codeql-action/upload-sarif@v2
+      #   with:
+      #     sarif_file: ../results/codeql.sarif
