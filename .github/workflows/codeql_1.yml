@@ -64,10 +64,15 @@ jobs:
         #config-file: ./.github/codeql/custom-security-and-quality.qls
         config-file: ./.github/codeql/codeql-config.yml 
         #queries: +security-and-quality,octo-org/python-qlpack/show_ifs.ql@main
-        #queries: +security-and-quality
+        queries: +security-and-quality
         #packs: +scope/pack1,scope/pack2@1.2.3,scope/pack3@4.5.6:path/to/queries
         #queries: './custom-queries'
-        debug: true
+        # packs:
+        # # Use these packs for JavaScript and TypeScript analysis
+        #   javascript:
+        #     - scope/js-pack1
+        #     - scope/js-pack2
+        # debug: true
 
         # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
