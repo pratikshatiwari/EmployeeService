@@ -3,6 +3,7 @@
  * @description Flags ambiguous IDs in attributes
  * @kind problem
  * @problem.severity warning
+ * @precision medium
  * @tags correctness
  * @id custom.AmbiguousIdAttribute
  */
