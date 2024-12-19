@@ -7,3 +7,5 @@ setInterval("console.log('Still unsafe')", 2000);
 
 // Example of safe usage
 setTimeout(() => console.log('This is safe'), 1000);
+
+setInterval("console.log('Still unsafe')", 5000);
