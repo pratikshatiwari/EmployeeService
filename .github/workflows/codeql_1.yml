@@ -66,7 +66,7 @@ jobs:
         #queries: +security-and-quality,octo-org/python-qlpack/show_ifs.ql@main
         #queries: +security-and-quality
         #packs: +scope/pack1,scope/pack2@1.2.3,scope/pack3@4.5.6:path/to/queries
-        queries: './custom-queries/complex-methods.ql'
+        queries: './custom-queries'
         debug: true
 
         # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
