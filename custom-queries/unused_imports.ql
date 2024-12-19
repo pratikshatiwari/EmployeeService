@@ -1,24 +1,22 @@
-/**
- * @name Unused Imports
- * @description Detects unused import statements in JavaScript/TypeScript files.
- * @kind problem
- * @problem.severity warning
- * @tags maintainability, readability, code-smell
- * @id js/unused-imports
- */
-
 import javascript
 
-/**
- * Matches import declarations.
- */
-class UnusedImport extends Import {
-  predicate isUnused() {
-    // An import is unused if none of its imported identifiers are referenced.
-    result = not exists(this.getAnImportedValue().getALocalUse())
+class UnusedImport extends Modules::Import {
+  // Implement the required abstract predicates
+  override predicate getImportedModuleNode() {
+    result = this.getImportedModule()
+  }
+
+  override predicate getImportedPath() {
+    result = this.getImportPath()
+  }
+
+  override predicate getEnclosingModule() {
+    result = this.getModule()
   }
 }
 
-from UnusedImport unusedImport
-where unusedImport.isUnused()
-select unusedImport, "Remove this unused import."
+from UnusedImport ui
+where
+  // Add a condition to identify unused imports
+  not exists(ui.getModule().getAReference())
+select ui, "This import is unused."
