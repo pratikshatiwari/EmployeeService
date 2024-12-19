@@ -8,7 +8,6 @@
 
 import javascript
 
-from CallExpr call, string methodName
-where call.getCallee().getName() = "eval" // Detect `eval` usage
-  or exists (LoopStmt loop | loop.getEnclosingLoop().getEnclosingLoop() = loop) // Nested loops
-select call, "Unsafe use of '" + methodName + "' detected in complex code."
+from CallExpr call
+where call.getCallee().toString() = "eval" // Ensures accurate resolution of `eval` calls
+select call, "Unsafe use of 'eval' detected here."
