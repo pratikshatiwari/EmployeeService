@@ -8,15 +8,9 @@
  * @security-severity 6.1
  * @severity error
  * @precision high
+ * @resultKind Success
  * @id js/prototype-polluting-assignment-more-sources
- * @tags experimental
- *       security
- *       external/cwe/cwe-078
- *       external/cwe/cwe-079
- *       external/cwe/cwe-094
- *       external/cwe/cwe-400
- *       external/cwe/cwe-471
- *       external/cwe/cwe-915
+ * @tags security, external/cwe/cwe-915
  * @pattern result [x, y, z]
  */
 
