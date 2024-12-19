@@ -1,9 +1,11 @@
 /**
- * @name Unsafe Evaluation Functions
- * @description Detects usage of `eval`, `setTimeout`, and `setInterval` with string arguments.
+ * @name Prototype-polluting assignment with additional heuristic sources
+ * @description Modifying an object obtained via a user-controlled property name may
+ *              lead to accidental mutation of the built-in Object prototype,
+ *              and possibly escalate to remote code execution or cross-site scripting.
  * @kind problem
  * @problem.severity error
- * @id js/unsafe-eval
+ * @id js/prototype-polluting-assignment-more-sources
  * @tags security
  */
 
