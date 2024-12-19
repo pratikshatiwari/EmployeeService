@@ -1,13 +1,14 @@
-import java
-import semmle.code.java.metrics.CyclomaticComplexity
-
 /**
- * @name Complex method detection
- * @description Detects methods with high cyclomatic complexity.
+ * @name Detect Complex Code Patterns
+ * @description Identifies unsafe use of `eval` and nested structures.
  * @kind problem
- * @id java-reliability-complex-method
- * @severity warning
+ * @problem.severity warning
+ * @id complex-java
  */
-from Method m, int complexity
-where complexity = m.getCyclomaticComplexity() and complexity > 10
-select m, "Method '" + m.getName() + "' has cyclomatic complexity of " + complexity + ". Refactor to improve reliability."
+
+import javascript
+
+from CallExpr call, string methodName
+where call.getCallee().getName() = "eval" // Detect `eval` usage
+  or exists (LoopStmt loop | loop.getEnclosingLoop().getEnclosingLoop() = loop) // Nested loops
+select call, "Unsafe use of '" + methodName + "' detected in complex code."
