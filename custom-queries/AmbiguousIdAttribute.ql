@@ -1,17 +1,14 @@
 /**
- * @name Ambiguous HTML id attribute
- * @description If an HTML document contains two elements with the
- *              same id attribute, it may be interpreted differently
- *              by different browsers.
+ * @name AmbiguousIdAttribute
+ * @description Flags ambiguous IDs in attributes
  * @kind problem
  * @problem.severity warning
- * @id js/duplicate-html-id
- * @tags maintainability
- *       correctness
- * @precision low
+ * @tags correctness
+ * @id custom.AmbiguousIdAttribute
  */
 
 import javascript
+
 
 /**
  * Holds if `attr` is an id attribute with value `id` of a DOM element
