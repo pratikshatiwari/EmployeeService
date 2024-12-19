@@ -17,6 +17,7 @@
  *       external/cwe/cwe-400
  *       external/cwe/cwe-471
  *       external/cwe/cwe-915
+ * @pattern result [x, y, z]
  */
 
 import javascript
