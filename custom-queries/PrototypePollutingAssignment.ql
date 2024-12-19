@@ -1,17 +1,10 @@
 /**
- * @name Prototype-polluting assignment with additional heuristic sources
- * @description Modifying an object obtained via a user-controlled property name may
- *              lead to accidental mutation of the built-in Object prototype,
- *              and possibly escalate to remote code execution or cross-site scripting.
+ * @name Unsafe Evaluation Functions
+ * @description Detects usage of `eval`, `setTimeout`, and `setInterval` with string arguments.
  * @kind problem
- * @problem.severity warning
- * @security-severity 6.1
- * @severity error
- * @precision high
- * @resultKind Success
- * @id js/prototype-polluting-assignment-more-sources
- * @tags security, external/cwe/cwe-915
- * @pattern result [x, y, z]
+ * @problem.severity error
+ * @id js/unsafe-eval
+ * @tags security
  */
 
 import javascript
