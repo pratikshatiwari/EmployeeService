@@ -1,23 +1,44 @@
-// Example file: prototypePollutionExample.js
+/**
+ * @name Prototype Pollution Risk Detection in Java
+ * @description Identifies potential prototype pollution-like vulnerabilities in Java applications.
+ * @kind path-problem
+ * @problem.severity warning
+ * @id java-prototype-pollution-risk
+ * @tags security
+ */
 
-// A function demonstrating a potential prototype pollution vulnerability
-function addKeyToMap(map, key, value) {
-  // Simulating untrusted input
-  map[key] = value;
+import java
+import semmle.code.java.dataflow.DataFlow
+
+/**
+ * Configuration to track the flow of untrusted data into dynamic object manipulations.
+ */
+class PrototypePollutionRisk extends TaintTracking::Configuration {
+  PrototypePollutionRisk() {
+    this = "PrototypePollutionRisk"
+  }
+
+  override predicate isSource(DataFlow::Node source) {
+    exists(MethodCall mc |
+      mc.getMethod().getDeclaringType().hasQualifiedName("java.util", "Map") and
+      mc.getMethod().getName() = "put" and
+      source.asExpr() = mc.getArgument(0)
+    )
+  }
+
+  override predicate isSink(DataFlow::Node sink) {
+    exists(MethodCall mc |
+      mc.getMethod().getDeclaringType().hasQualifiedName("java.util", "Map") and
+      mc.getMethod().getName() = "get" and
+      sink.asExpr() = mc.getArgument(0)
+    )
+  }
 }
 
-function fetchDataAndUse() {
-  const userMap = {}; // A plain object acting as a "map"
-  
-  // Potentially untrusted data source
-  const userInputKey = "__proto__";
-  const userInputValue = { malicious: true };
-
-  // Add key to the map
-  addKeyToMap(userMap, userInputKey, userInputValue);
-
-  console.log("Updated Map:", userMap);
-}
-
-// Execute the vulnerable function
-fetchDataAndUse();
+/**
+ * Main query to identify risky data flows.
+ */
+from PrototypePollutionRisk config, DataFlow::PathNode flow
+where config.hasFlowPath(flow)
+select flow, 
+  "Potential untrusted data flow into object manipulation, which may lead to prototype pollution risks."
