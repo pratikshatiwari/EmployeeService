@@ -6,10 +6,13 @@
   "dependencies": {
     "lodash": "4.17.15",      // Stale version (current version: 4.17.21)
     "express": "4.16.1",      // Stale version (current version: 4.18.2)
-    "react": "16.13.1"        // Stale version (current version: 18.2.0)
+    "react": "16.13.1",        // Stale version (current version: 18.2.0)
+    "moment": "^2.29.1",       // Unused dependency
+    "uuid": "^8.3.2"           // Unused dependency
   },
   "devDependencies": {
-    "eslint": "6.8.0"         // Stale version (current version: 8.50.0)
+    "eslint": "6.8.0",         // Stale version (current version: 8.50.0)
+    "jest": "^29.0.0"          // Unused dependency
   },
   "scripts": {
     "start": "node index.js",
