@@ -4,7 +4,7 @@
   "description": "Example project with stale dependencies",
   "main": "index.js",
   "dependencies": {
-    "lodash": "4.17.15",      // Stale version (current version: 4.17.21)
+    "lodash": "4.17.21",      // Stale version (current version: 4.17.21)
     "express": "4.16.1",      // Stale version (current version: 4.18.2)
     "react": "16.13.1",        // Stale version (current version: 18.2.0)
     "moment": "^2.29.1",       // Unused dependency
