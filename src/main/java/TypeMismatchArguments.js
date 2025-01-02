@@ -20,7 +20,7 @@ try {
     console.log("Area:", calculateRectangleArea(10, 5));
 
     // Incorrect: Passing a string instead of a number
-    console.log("Area:", calculateRectangleArea("10", 5));
+    console.log("Area:", calculateRectangleArea("ten", 5));
 
     // Incorrect: Passing an object instead of a number
     console.log("Area:", calculateRectangleArea({ length: 10 }, 51));
