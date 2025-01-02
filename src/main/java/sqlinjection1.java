@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class VulnerableJava {
+public class sqlinjection1 {
     public void getUser(String username) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "password");
