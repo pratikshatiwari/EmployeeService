@@ -4,7 +4,8 @@ userName = "Bob"; // Reassigning the value is fine, but 'var' should be avoided.
 
 // Using 'const' incorrectly (attempting to reassign)
 const maxUsers = 100;
-// maxUsers = 200; // Uncommenting this line will cause an error because 'const' variables cannot be reassigned.
+// maxUsers = 200; 
+// Uncommenting this line will cause an error because 'const' variables cannot be reassigned.
 
 // Using 'let' unnecessarily when 'const' should be used
 let userRole = "admin"; // Should be 'const' since this value does not change
